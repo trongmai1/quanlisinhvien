@@ -1,0 +1,67 @@
+
+<head>
+<script>
+//bai1
+    var n=parseInt(prompt('nhap 1 so nguyen duong'))
+    function prime(n){
+        if (n<=1) return false
+        if(n===2) return true
+        if(n%2==0) return false
+    const sqrtN=Math.sqrt(n)
+    for (let i=3; i<=sqrtN;i+=2){
+      if(n%i===0)
+      return false
+    }
+    return true
+    }
+    console.log(prime(n))
+
+//bai3
+function mostFrequentNumber(arr) {
+    const frequencyMap = new Map();
+    
+    // Đếm số lần xuất hiện của từng phần tử
+    for (let num of arr) {
+        frequencyMap.set(num, (frequencyMap.get(num) || 0) + 1);
+    }
+    
+    let mostFrequent = null;
+    let maxFrequency = 0;
+    
+    // Duyệt qua các giá trị trong frequencyMap để tìm số xuất hiện nhiều nhất
+    for (let [num, frequency] of frequencyMap) {
+        if (frequency > maxFrequency) {
+            maxFrequency = frequency;
+            mostFrequent = num;
+        }
+    }
+    
+    return mostFrequent;
+}
+
+// Ví dụ sử dụng
+const arr = [1, 2, 3, 1, 2, 1, 1, 3, 4, 5, 1, 2];
+console.log(mostFrequentNumber(arr))
+
+
+//bai5
+function canFormPalindrome(str) {
+  const mymap = new Map();//luu tan so xuat hien cac ky tu
+
+  for (let i of str) {// duyet qua tung ki tu
+    mymap.set(i, (mymap.get(ch) || 0) + 1);//get:lay tan so xh cua i,neu ko co trog map=> undifine
+  }//||0:neu i chua xh gtri =0 roi tang dan len 1,set:cap nhat laitan suat ki tu
+
+  let demsolanle = 0;
+
+  for (let count of mymap.values()) {//lay tat ca phan tu trong map,moi ptu la so lan xh
+    if (count % 2 !== 0) demsolanle++;// ktra le, neu le tang them 1
+    if (demsolanle > 1) return false; // Nếu có hơn 1 ký tự lẻ => không thể là palindrome
+  }
+
+  return true;
+}
+
+
+</script>
+</head>
