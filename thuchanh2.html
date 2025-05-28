@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>Form đăng kí</h1>
+    <form id="myForm">
+        Họ tên: <br>
+        <input id="name"><br>
+        <div class="error" id="errorName"></div>
+
+        Ngày sinh (ngày/tháng/năm):<br>
+        <input id="dob"><br>
+        <div class="error" id="errDob"></div>
+
+        Tuổi:<br>
+        <input id="age"><br>
+        <div class="error" id="errAge"></div>
+
+        Quê quán:<br>
+        <input id="hometown"><br>
+        <div class="error" id="errHometown"></div>
+
+        Email:<br>
+        <input id="email"><br>
+        <div class="error" id="errEmail"></div>
+
+        Số điện thoại:<br>
+        <input id="phone"><br>
+        <div class="error" id="errPhone"></div>
+
+        Số CMND/CCCD:<br>
+        <input id="soCCCD"><br>
+        <div class="error" id="errsoCCCD"></div>
+
+        Nghề nghiệp:<br>
+        <input id="job"><br>
+        <div class="error" id="errJob"></div>
+
+        Tên tài khoản:<br>
+        <input id="username"><br>
+        <div class="error" id="errUsername"></div>
+
+        Mật khẩu:<br>
+        <input id="password" required minlength="6"><br>
+        <div class="error" id="errPassword"></div>
+
+        <br>
+        <button type="button" onclick="validateForm()">Gửi</button>
+        <div id="result" class="info"></div>
+    </form>
+
+<script>
+function validateForm() {
+    const name = document.getElementById("name").value.trim()
+    const dob = document.getElementById("dob").value.trim()
+    const age = document.getElementById("age").value.trim()
+    const hometown = document.getElementById("hometown").value.trim()
+    const email = document.getElementById("email").value.trim()
+    const phone = document.getElementById("phone").value.trim()
+    const soCCCD = document.getElementById("soCCCD").value.trim()
+    const job = document.getElementById("job").value.trim()
+    const username = document.getElementById("username").value.trim()
+    const password = document.getElementById("password").value.trim()
+
+    document.querySelectorAll(".error").forEach(e => e.innerHTML = "")
+    document.getElementById("result").innerHTML = ""
+
+    let valid = true
+
+    if (name === "") {
+        document.getElementById("errorName").innerText = "Họ tên không được để trống"
+        valid = false
+    } else {
+        for (let i = 0; i < name.length; i++) {
+            const ch = name[i]
+            const code = ch.charCodeAt(0)
+            if (!(code >= 65 && code <= 90 || code >= 97 && code <= 122 || code === 32 || code >= 192)) {
+                document.getElementById("errorName").innerText = "Họ tên không được chứa số hoặc ký tự đặc biệt."
+                valid = false
+                break
+            }
+        }
+    }
+
+    const parts = dob.split("/")
+    if (parts.length !== 3) {
+        document.getElementById("errDob").innerText = "Định dạng phải là dd/mm/yyyy."
+        valid = false
+    } else {
+        const day = parseInt(parts[0])
+        const month = parseInt(parts[1])
+        const year = parseInt(parts[2])
+        const date = new Date(year, month - 1, day)
+        if (date.getDate() !== day || date.getMonth() !== month - 1 || date.getFullYear() !== year) {
+            document.getElementById("errDob").innerText = "Ngày sinh không hợp lệ."
+            valid = false
+        }
+    }
+
+    const ageNum = parseInt(age)
+    if (isNaN(ageNum) || ageNum < 1 || ageNum > 120) {
+        document.getElementById("errAge").innerText = "Tuổi phải là số nguyên"
+        valid = false
+    }
+
+    if (hometown === "") {
+        document.getElementById("errHometown").innerText = "Không được để trống."
+        valid = false
+    }
+
+
+    if (!email.includes("@")) {
+        document.getElementById("errEmail").innerText = "Email phải chứa ký tự '@'."
+        valid = false
+    }
+
+    if (phone.length !== 10 || phone[0] !== "0" || !"235789".includes(phone[1])) {
+        document.getElementById("errPhone").innerText = "SĐT không hợp lệ (phải 10 chữ số, bắt đầu 03/05/07/08/09)."
+        valid = false
+    } else {
+        for (let ch of phone) {
+            if (ch < '0' || ch > '9') {
+                document.getElementById("errPhone").innerText = "SĐT chỉ chứa số."
+                valid = false
+                break
+            }
+        }
+    }
+
+    if (!(soCCCD.length === 12)) {
+        document.getElementById("errsoCCCD").innerText = "CMND/CCCD phải có 12 chữ số."
+        valid = false
+    } else {
+        for (let ch of soCCCD) {
+            if (ch < '0' || ch > '9') {
+                document.getElementById("errsoCCCD").innerText = "Chỉ được chứa số."
+                valid = false
+                break
+            }
+        }
+    }
+
+    if (job === "") {
+        document.getElementById("errJob").innerText = "Không được để trống."
+        valid = false
+    }
+
+    if (username === "") {
+        document.getElementById("errUsername").innerText = "Không được để trống."
+        valid = false
+    } else if (username.length < 6 || username.length > 20) {
+        document.getElementById("errUsername").innerText = "Phải từ 6–20 ký tự."
+        valid = false
+    } else if (username.includes(" ")) {
+        document.getElementById("errUsername").innerText = "Không chứa khoảng trắng."
+        valid = false
+    }
+
+    if (password === "") {
+        document.getElementById("errPassword").innerText = "Không được để trống."
+        valid = false
+    } else if (password.length < 6) {
+        document.getElementById("errPassword").innerText = "Ít nhất 6 ký tự."
+        valid = false
+    }
+
+    if (valid) {
+        document.getElementById("result").innerHTML = `
+            <h3>Gửi thông tin thành công</h3>
+            <p>Họ tên: ${name}</p>
+            <p>Ngày sinh: ${dob}</p>
+            <p>Tuổi: ${age}</p>
+            <p>Quê quán: ${hometown}</p>
+            <p>Email: ${email}</p>
+            <p>SĐT: ${phone}</p>
+            <p>CMND/CCCD: ${soCCCD}</p>
+            <p>Nghề nghiệp: ${job}</p>
+            <p>Username: ${username}</p>
+            <p>Mật khẩu: ${'*'.repeat(password.length)}</p>
+        `
+    }
+}
+</script>
+</body>
+</html>
