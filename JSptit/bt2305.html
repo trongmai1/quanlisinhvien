@@ -1,0 +1,30 @@
+<script>
+    function chuanhoahoten(ten) {
+    ten = ten.trim().toLowerCase();
+    let words = ten.split(" ");
+    words = words.filter(word => word !== ""); // Loại bỏ khoảng trắng dư
+    words = words.map(word => word.charAt(0).toUpperCase() + word.slice(1));
+    return words.join(" ");
+}
+console.log(chuanhoahoten("lE tRONG maI ")); // Kết quả: "Le Trong Mai"
+
+//bai2
+        function daonguoctu(str) {
+    let words = str.split(" ");
+    let reversedWords = words.map(word => {
+        let reversed = word.split("").reverse().join("");
+        return reversed.charAt(0)+ reversed.slice(1)
+    });
+    return reversedWords.join(" ");
+}
+console.log(daonguoctu("Xin chao cac ban")); 
+
+//bai3
+function demsotukolap(str){
+    const cactu=str.toLowerCase().split(" ")
+    return new Set(cactu).size
+}
+console.log(demsotukolap("Hello hello world HELLO"))
+
+
+</script>

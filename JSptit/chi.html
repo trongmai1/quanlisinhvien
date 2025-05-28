@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuanLyChiTieu</title>
+</head>
+<body>
+    <h1>Tiêu Dùng Thông Minh</h1>
+
+    <div class="card">
+        <h2>Nhập Khoản Chi</h2>
+        Ghi chú:<br>
+        <input id="mota" type="text" placeholder="Mô tả(VD:ăn cứt)"><br><br>
+        Số tiền:<br>
+        <input id="sotien" type="number" placeholder="Số tiền(VNĐ)"><br><br>
+        Danh mục:<br>
+        <select id="phanloai">
+            <option value="Ăn uống">Ăn uống</option>
+            <option value="Giải trí">Giải trí</option>
+            <option value="Tiền nhà">Tiền nhà</option>
+            <option value="Đi lại">Đi lại</option>
+            <option value="Khác">Khác</option>
+        </select><br><br>
+        Chi vào ngày:<br>
+        <input id="ngay" type="date">
+    </div>
+    <div>
+        <button onclick="add()">Thêm khoản chi </button>
+    </div>
+
+    <div class="card">
+        <h2>Tổng Chi Tiêu:<span id="tong">0</span></h2>
+    </div>
+
+    <div class="card">
+        <h2>Danh Sách Chi Tiêu</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Ghi chú</th>
+                    <th>Số tiền</th>
+                    <th>Danh mục</th>
+                    <th>Ngày</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody id="dschi"></tbody>
+        </table>
+    </div>
+
+<script>
+    
+</script>
+</body>
+</html>

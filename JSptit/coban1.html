@@ -1,0 +1,23 @@
+<script>
+    //oj constructor
+    function user(firtname, lastname, avatar){
+        this.firtname=firtname
+        this.lastname=lastname
+        this.avatar=avatar
+
+        this.getName= function(){
+            return `${this.firtname} ${this.lastname}`
+        }
+    }
+
+    var author=new user("Mai","LE","ava")
+    var users=new user("son","dang","kakdass")
+    author.title="chia se"
+    users.coommet="lieu co khoa"
+
+    console.log(author)
+    console.log(users)
+
+    //
+
+</script>

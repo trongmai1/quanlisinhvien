@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <form id="myForm">
+        <label for="username">Tên người dùng</label>
+        <input type="text" id="username" name="username" required>
+        <br>
+        <label for="password">Mật khẩu</label>
+        <input type="password" id="password" name="password" required minlength="6">
+        <br><br>
+        <button type="button" onclick="vaLidateForm()">Gửi</button>
+    </form>
+
+    <div id="error" style="color: blue;"></div>
+
+    <script>
+        function vaLidateForm() {
+            const usernameInput = document.getElementById("username");
+            const passwordInput = document.getElementById("password");
+            const error = document.getElementById("error");
+            error.innerHTML = "";
+
+            let messages = [];
+
+            if (!usernameInput.checkValidity()) {
+                messages.push("Tên người dùng không hợp lệ.");
+            }
+
+            if (!passwordInput.checkValidity()) {
+                messages.push("Mật khẩu phải có ít nhất 6 ký tự.");
+            }
+
+            if (messages.length > 0) {
+                error.innerHTML = messages.map(msg => `<p>${msg}</p>`).join("");
+            } else {
+                error.innerHTML = "<p>Form hợp lệ. Đã gửi!</p>";
+                document.getElementById("myForm").submit()
+            }
+        }
+    </script>
+</body>
+</html>
+
+

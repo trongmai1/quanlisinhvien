@@ -1,0 +1,77 @@
+<head>
+    <script>
+//bai1
+function FindMostFre(words){
+    const wordcount={}
+    for (let i=0;i<words.length;i++){
+        let word=words[i]
+     wordcount[word]= (wordcount[word]||0)+1
+    }
+    let maxw=""
+    let maxc=0
+    for(let n in wordcount){
+        if(wordcount[n]>maxc){
+            maxc=wordcount[n]
+            maxw=n
+        }
+    }
+    return{word:maxw, count:maxc}
+}
+const wordss = ["apple", "banana", "apple", "orange", "banana", "apple",
+"grape"];
+console.log(FindMostFre(words))
+
+/////////////////////////
+
+//bai3
+function findTopCustomer(orders){
+    const custt={}
+    for(let i=0;i<orders.length;i++){
+        let {customer,total}=orders[i]
+        custt[customer]=(custt[customer]||0)+total
+    }
+    let topcus=""
+    let maxtt=0
+    for(let n in custt){
+    if(custt[n]>maxtt){
+        maxtt=custt[n]
+        topcus=n
+    }
+}
+return {cus:topcus,total:maxtt}
+}
+const orders = [
+    { customer: "A", total: 500 },
+    { customer: "B", total: 700 },
+    { customer: "A", total: 300 },
+    { customer: "C", total: 900 },
+    { customer: "B", total: 100 }
+];
+console.log(findTopCustomer(orders))
+///////////////////////////////
+
+//bai1
+function findMostFrequent(words){
+    const wordCount={}
+    for (let i=0;i<words.length;i++){
+        let word=words[i]
+        wordCount[word]=(wordCount[word]||0)+1
+    }
+    let maxw=""
+    let maxc=0
+    for (let n in wordCount){
+        if(wordCount[n]>maxc){
+           maxc=wordCount[n]
+           maxw=n
+        }
+    }
+return {count:maxc,word:maxw}
+}
+const words = ["apple", "banana", "apple", "orange", "banana", "apple",
+"grape"];
+console.log(findMostFrequent(words))
+
+
+
+    </script>
+</head>

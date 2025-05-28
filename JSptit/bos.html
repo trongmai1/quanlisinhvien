@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Giới thiệu về CSS</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: blue;
+      margin-bottom: 20px;
+    }
+
+    .container {
+      border: 2px solid blue;
+      padding: 20px;
+      overflow: auto; /* để float không phá layout */
+    }
+
+    .box {
+      background-color: #c6e2ff;
+      padding: 15px;
+      border: 2px solid blue;
+      width: 220px;
+      float: left;
+      margin: 20px;
+      text-align: center;
+    }
+
+    .inner-box {
+      background-color: #e0ffff;
+      border: 1px dashed blue;
+      margin-top: 10px;
+      padding: 10px;
+      font-size: 14px;
+    }
+
+    footer {
+      border: 2px solid blue;
+      margin-top: 15px;
+      padding: 10px;
+      text-align: center;
+      color: #333;
+      clear: both; /* để footer không bị trôi theo float */
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Giới thiệu về CSS</h1>
+
+  <div class="container">
+    <div class="box">
+      <strong>Box 1</strong><br>
+      Đây là nội dung của box 1.
+
+      <div class="inner-box">
+        Đây là box con bên trong Box 1.
+      </div>
+    </div>
+
+    <div class="box">
+      <strong>Box 2</strong><br>
+      Đây là nội dung của box 2.<br>
+      CSS giúp định dạng giao diện.
+
+      <div class="inner-box">
+        Đây là box con bên trong Box 2.
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    Đây là phần kết hoặc ghi chú cuối trang.
+  </footer>
+
+</body>
+</html>

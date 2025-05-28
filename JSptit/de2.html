@@ -1,0 +1,58 @@
+<script>
+  //bai1
+function isPerfectNumber(n){
+    if (n<2) 
+    return false 
+let tong=1
+const sqrtN=Math.floor(Math.sqrt(n))
+for(let i=2;i<=sqrtN;i++){
+    if(n%i===0){
+        tong+=i
+        if(i!==n/i)
+        tong+=n/i
+    }
+  }
+return tong===n
+}
+console.log(isPerfectNumber(9))
+
+
+// Bài 2: 
+function largeFactorialMod(n, m) {
+  let x = 1
+  for (let i = 2; i <= n; i++) {
+    x = (x * i) % m
+  }
+  return x
+}
+console.log(largeFactorialMod(1, 2))
+
+//bai3
+function findOddFrequency(arr) {
+  let kq = []
+  arr.sort()
+  let a = arr[0]
+  let dem = 1
+   for (let i = 1; i < arr.length; i++) { 
+    if (arr[i] === a) {
+      dem++;
+    } else {
+      if (dem % 2 !== 0) { 
+        kq.push(a)
+      }
+      a = arr[i]
+      dem = 1
+    }
+  }
+  if (dem % 2 !== 0) {
+    kq.push(a)
+  }
+  return kq
+}
+console.log(findOddFrequency([1,3,4,1,1,4,2]))
+
+
+
+
+
+</script>

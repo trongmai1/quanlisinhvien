@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Giới thiệu về CSS</title>
+  <style>
+    body {
+      padding: 15px;
+      margin: 20px;
+      border: blue;
+    }
+
+    h1 {
+      text-align: center;
+      color: blue;
+      margin-bottom: 20px;
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-around;
+      border: 2px solid blue;
+      padding: 20px;
+    }
+
+    .box {
+      background-color: #c6e2ff;
+      padding: 20px;
+      border: 2px solid blue;
+      width: 200px;
+      text-align: center;
+    }
+
+    footer {
+      border: 2px solid blue;
+      margin-top: 15px;
+      padding: 10px;
+      text-align: center;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Giới thiệu về CSS</h1>
+
+  <div class="container">
+    <div class="box">
+      <strong>Box 1</strong><br>
+  
+    </div>
+    <div class="box">
+      <strong>Box 2</strong><br>
+    </div>
+  </div>
+
+  <footer>
+    sau khi clear,phần tử này sẽ không bị ảnh hưởng bởi float
+  </footer>
+
+</body>
+</html>

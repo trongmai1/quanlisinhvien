@@ -1,0 +1,54 @@
+<head>
+    <script>
+    //bai1    
+    function findStudents(students){
+            const maxx=Math.max(...students.map(student=>student.score))
+            return students.find(student=>student.score===maxx)
+        }
+        const students = [
+ { id: 1, name: "An", score: 85 },
+ { id: 2, name: "Bình", score: 92 },
+ { id: 3, name: "Cường", score: 75 },
+ { id: 4, name: "Duy", score: 95 },
+ { id: 5, name: "Lan", score: 89 }
+];
+const topst=findStudents(students)
+console.log(topst)
+
+//bai2
+function checkLowStock(inventory) {
+    return inventory.some(item => item.stock <= 2);
+}
+
+const inventory = [
+    { name: "Laptop", stock: 10 },
+    { name: "Mouse", stock: 2 },
+    { name: "Keyboard", stock: 5 },
+    { name: "Monitor", stock: 0 },
+    { name: "USB", stock: 1 }
+];
+
+qqz;
+console.log(hasLowStock); 
+
+//bai3
+function filterDevelopers(employees) {
+    return employees.filter(employee => 
+        employee.position === "Developer" && employee.salary > 2000
+    );
+}
+
+const employees = [
+    { name: "A", position: "Developer", salary: 2000 },
+    { name: "B", position: "Designer", salary: 1800 },
+    { name: "C", position: "Manager", salary: 5000 },
+    { name: "D", position: "Developer", salary: 2500 },
+    { name: "E", position: "Developer", salary: 3000 }
+];
+
+const filteredDevelopers = filterDevelopers(employees);
+console.log(filteredDevelopers);
+
+
+    </script>
+</head>

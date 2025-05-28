@@ -1,0 +1,116 @@
+<head>
+    <script>
+      //bai1
+function findMostFrequent(words) {
+    const wordCount = {}; // Object để lưu số lần xuất hiện của từng từ
+
+    // Duyệt qua mảng để đếm số lần xuất hiện của mỗi từ
+    for (let i = 0; i < words.length; i++) {
+        let word = words[i]; // Lấy từng từ trong mảng
+        wordCount[word] = (wordCount[word] || 0) + 1; // Nếu chưa có, gán 0 rồi tăng lên 1
+    }
+
+    let maxWord = ""; // Biến lưu từ xuất hiện nhiều nhất
+    let maxCount = 0; // Biến lưu số lần xuất hiện lớn nhất
+
+    // Duyệt qua object để tìm từ xuất hiện nhiều nhất
+    for (let key in wordCount) {
+        if (wordCount[key] > maxCount) {
+            maxCount = wordCount[key]; // Cập nhật số lần xuất hiện lớn nhất
+            maxWord = key; // Cập nhật từ xuất hiện nhiều nhất
+        }
+    }
+
+    return { word: maxWord, count: maxCount }; // Trả kết quả
+}
+
+const words = ["apple", "banana", "apple", "orange", "banana", "apple", "grape"];
+console.log(findMostFrequent(words)); // Kết quả: { word: 'apple', count: 3 }
+
+////////////////////////////
+//bai3
+function findTopCustomer(orders) {
+    const custt = {}; // Tạo một object để lưu tổng giá trị đơn hàng của từng khách hàng
+
+    // Duyệt qua từng đơn hàng trong mảng 'orders'
+    for (let i = 0; i < orders.length; i++) {
+        let { customer, total } = orders[i]; // Lấy thông tin 'customer' và 'total' từ đối tượng đơn hàng
+        custt[customer] = (custt[customer] || 0) + total; // Cộng dồn giá trị đơn hàng cho từng khách hàng
+    }
+
+    let topcus = ""; // Biến lưu tên khách hàng có tổng giá trị đơn hàng cao nhất
+    let maxtt = 0; // Biến lưu tổng giá trị đơn hàng lớn nhất
+
+    // Duyệt qua object 'custt' để tìm khách hàng có tổng giá trị lớn nhất
+    for (let n in custt) {
+        if (custt[n] > maxtt) { // Nếu tổng giá trị của khách hàng hiện tại lớn hơn giá trị lớn nhất đã lưu
+            maxtt = custt[n]; // Cập nhật tổng giá trị lớn nhất
+            topcus = n; // Cập nhật tên khách hàng có tổng giá trị cao nhất
+        }
+    }
+
+    return { customer: topcus, total: maxtt }; // Trả về một đối tượng chứa tên khách hàng và tổng giá trị đơn hàng cao nhất
+}
+
+// Dữ liệu đầu vào: danh sách đơn hàng
+const orders = [
+    { customer: "A", total: 500 },
+    { customer: "B", total: 700 },
+    { customer: "A", total: 300 },
+    { customer: "C", total: 900 },
+    { customer: "B", total: 100 }
+];
+
+console.log(findTopCustomer(orders)); // Gọi hàm và in kết quả ra màn hình
+///////////////////////////////////////////////////////////
+//bai2
+function groupByCategory(products) {
+    const groupedProducts = {}; // Tạo một object để lưu danh mục và danh sách sản phẩm
+
+    // Duyệt qua danh sách sản phẩm
+    for (let i = 0; i < products.length; i++) {
+        let { category, name } = products[i]; // Lấy thông tin danh mục và tên sản phẩm
+
+        // Nếu danh mục chưa có trong object, tạo một mảng mới
+        if (!groupedProducts[category]) {
+            groupedProducts[category] = [];
+        }
+
+        // Thêm sản phẩm vào danh mục tương ứng
+        groupedProducts[category].push(name);
+    }
+
+    return groupedProducts; // Trả về object đã gom nhóm
+}
+
+const products = [
+    { id: 1, name: "iPhone", category: "Electronics" },
+    { id: 2, name: "Samsung TV", category: "Electronics" },
+    { id: 3, name: "Nike Shoes", category: "Fashion" },
+    { id: 4, name: "Adidas Jacket", category: "Fashion" },
+    { id: 5, name: "Dell Laptop", category: "Electronics" }
+];
+
+console.log(groupByCategory(products));
+////////////////////////////////
+////bai4
+function countCharacters(str) {
+    const charCount = {}; // Tạo một object để lưu số lần xuất hiện của từng ký tự
+
+    // Duyệt qua từng ký tự trong chuỗi
+    for (let i = 0; i < str.length; i++) {
+        let char = str[i]; // Lấy từng ký tự
+        if (char !== " ") { // Bỏ qua khoảng trắng
+            charCount[char] = (charCount[char] || 0) + 1; // Cộng dồn số lần xuất hiện
+        }
+    }
+
+    return charCount; // Trả về object kết quả
+}
+
+const str = "hello world";
+console.log(countCharacters(str));
+
+
+    </script>
+</head>
